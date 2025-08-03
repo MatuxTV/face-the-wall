@@ -1,27 +1,17 @@
-import getAlbumTracksData from "@/lib/Spotify/album/getAlbumTracks";
-import getArtistsData from "@/lib/Spotify/artists/getArtistsData";
-import { AlbumCards } from "@/components/Spotify/AlbumCards";
+import { redirect } from "next/navigation";
 
-interface artistData {
-  name: string;
-  followers: number;
-  genres: string[];
-  images: { url: string; width: number; height: number }[];
-}
+const supportedLanguages = ["en", "sk"];
 
-interface albumsID {
-  id: string;
-}
+export default function Home() {
+  // Get the browser's preferred language
+  const browserLang =
+    typeof window !== "undefined" ? navigator.language.slice(0, 2) : "en";
 
-export default async function Home() {
-  const artistData : artistData = await getArtistsData(); // Name,followers, genres, images
-  const albumsID: albumsID[] = await getAlbumTracksData();// IDs of albums
+  // Check if the browser's language is supported
+  const lang = supportedLanguages.includes(browserLang) ? browserLang : "en";
 
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-     {albumsID.map((album) => (
-       <AlbumCards key={album.id} id={album.id} />
-     ))}
-    </div>
-  );
+  // Redirect to the appropriate language page
+  redirect(`/${lang}`);
+
+  return null; // This will never render because of the redirect
 }

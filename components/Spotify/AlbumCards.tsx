@@ -74,31 +74,37 @@ export function AlbumCards(props: { id: string }) {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        {albumData.images && albumData.images.length > 0 && (
+    <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
+      {albumData.images && albumData.images.length > 0 && (
+        <div className="relative">
           <img
             src={albumData.images[0].url}
             alt={albumData.name}
-            className="w-full h-48 object-cover"
+            className="w-full h-64 object-cover"
           />
-        )}
-        <div className="p-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            {albumData.name}
-          </h3>
-          <p className="text-sm text-gray-600 mb-1">
-            Release Date: {albumData.release_date}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        </div>
+      )}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">
+          {albumData.name}
+        </h3>
+        <div className="space-y-2 text-sm">
+          <p className="text-gray-400">
+            <span className="text-orange-400 font-medium">Release:</span> {albumData.release_date}
           </p>
-          <p className="text-sm text-gray-600 mb-1">
-            Total Tracks: {albumData.total_tracks}
+          <p className="text-gray-400">
+            <span className="text-orange-400 font-medium">Tracks:</span> {albumData.total_tracks}
           </p>
           {albumData.genres && albumData.genres.length > 0 && (
-            <p className="text-sm text-gray-600">
-              Genres: {albumData.genres.join(", ")}
+            <p className="text-gray-400">
+              <span className="text-orange-400 font-medium">Genres:</span> {albumData.genres.slice(0, 2).join(", ")}
             </p>
           )}
         </div>
+        <button className="w-full mt-4 bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded-md font-medium transition-colors duration-200">
+          Listen on Spotify
+        </button>
       </div>
     </div>
   );
