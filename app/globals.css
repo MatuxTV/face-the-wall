@@ -68,10 +68,21 @@ html {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary-black: #111111;
+  --color-secondary-black: #2a2a2a;
+  --font-metal: 'Metal Mania', regular;
+  --color-primary-orange: #FF4500;
+  --color-secondary-orange: #852907;
+  --color-white1: #FAFAFA;
+  --color-white2: #A1A1AA;
+  --color-red1 : #DC143C;
+ --color-text-primary: linear-gradient(to right, #FF4500, #DC143C);
+ --color-black-background: #1C1C1C;
 }
 
 :root {
   --radius: 0.625rem;
+  --drop-shadow-orange: 0px 4px 11.3px 0px #FF4500;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -146,4 +157,44 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.default-text {
+  background: linear-gradient(to right, rgba(255, 69, 0, 1), rgba(153, 41, 0, 1));
+}
+
+
+/* Text Stroke Utilities */
+.stroke-1 {
+  -webkit-text-stroke: 1px;
+}
+
+.stroke-2 {
+  -webkit-text-stroke: 2px;
+}
+
+.stroke-3 {
+  -webkit-text-stroke: 3px;
+}
+
+.stroke-4 {
+  -webkit-text-stroke: 4px;
+}
+
+/* Stroke Colors */
+.stroke-secondary-orange {
+  -webkit-text-stroke-color: var(--color-secondary-orange);
+}
+
+.stroke-primary-orange {
+  -webkit-text-stroke-color: var(--color-primary-orange);
+}
+
+.stroke-white {
+  -webkit-text-stroke-color: white;
+}
+
+/* Font Metal */
+.font-metal {
+  font-family: var(--font-metal);
 }

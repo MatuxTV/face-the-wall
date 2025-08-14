@@ -5,5 +5,75 @@
         "music": "Music",
         "shows": "Shows",
         "contact": "Contact"
+    },
+    "buttons": {
+        "listenUs": "Listen to Us",
+        "followUs": "Follow Us",
+        "tourDates": "Tour Dates"
+    },
+    "hero": {
+        "subtitle": "Loud. Fast. No compromises.",
+        "listenButton": "Listen Now",
+        "followers": "Followers",
+        "albums": "Albums",
+        "songs": "Songs",
+        "tourDivTitle": "UPCOMING TOURS",
+        "tourDivSubtitle": "Don't miss our upcoming performances!"
+    },
+    "about": {
+        "title": "NO ESCAPE",
+        "description1": "Face The Wall is a young Death/Thrash metal band forged in Slovakia’s underground in 2022. Their sound is a violent collision of fast technical riffs, relentless drums and searing melodic solos – sharpened with themes of death, gore, beer and radiation.",
+        "description2": "This is not your typical metal act. This is four obsessed minds unleashing controlled chaos:",
+        "description3" : "Leo Medveď – vocals, rhythm guitar. The voice of decay.Šimon Vician – lead guitar. Precision in madness.Michal Lamper – drums. A war machine in motion.Timotej Panuska – bass guitar. The low-end fallout.",
+        "description4" : "Face The Wall doesn’t aim to entertain. They aim to detonate.Every song is a weapon. Every show is detonation.",
+        "description5" : "This is not a concert. This is fallout.",
+        "tile1" : "LIVE SHOWS",
+        "tile2" : "MONTHLY LISTENERS",
+        "tile3" : "LISTENS ON SPOTIFY",
+        "tile4" : "REASONS WHY YOUR EARS BLEED"
+    },
+    "our_music": {
+        "title": "OUR MUSIC",
+        "description": "Experience the power and emotion of Face The Wall through our studio albums, each telling a unique story of rebellion, passion, and the metal spirit."
+    },
+    "tour": {
+        "title": "TOUR DATES",
+        "description": "Experience the raw power of Face The Wall live. Join us on our latest tour as we bring our crushing sound to stages across the country.",
+        "dates": [
+            {
+                "date": "2023-10-01",
+                "status" : "Sold Out",
+                "location": "Bratislava, Slovakia",
+                "venue": "Majestic Music Club",
+                "href" : ""
+            },
+            {
+                "date": "2023-10-15",
+                "status" : "Available",
+                "location": "Prague, Czech Republic",
+                "venue": "Rock Café",
+                "href" : ""
+            },
+            {
+                "date": "2023-10-22",
+                "status" : "Available",
+                "location": "Vienna, Austria",
+                "venue": "Arena Wien",
+                "href" : ""
+            }
+        ]
+    },
+    "contact": {
+        "title": "BOOK US FOR A SHOW",
+        "description": "Want us at your event? Contact us and let's make your event an unforgettable experience!",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "required": "Required",
+        "successMessage": "Message sent successfully!",
+        "errorMessage": "Error sending message. Please try again.",
+        "submit": "Send Message",
+        "followUs" :"Follow Us",
+        "mailUs" : "Mail Us"
     }
-}
+} 

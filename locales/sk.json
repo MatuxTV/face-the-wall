@@ -5,5 +5,75 @@
         "music": "Hudba",
         "shows": "Podujatia",
         "contact": "Kontakt"
+    },
+    "buttons": {
+        "listenUs": "Počúvajte nás",
+        "followUs": "Sledujte nás",
+        "tourDates": "Termíny turné"
+    },
+    "hero": {
+        "subtitle": "Hlasno. Rýchlo. Bez kompromisov.",
+        "listenButton": "Počúvajte teraz",
+        "followers": "Followerov",
+        "albums": "Albumov",
+        "songs": "Skladieb",
+        "tourDivTitle": "NADCHÁDZAJÚCE TURNÉ",
+        "tourDivSubtitle": "Nezmeškajte naše nadchádzajúce vystúpenia!"
+    },
+    "about": {
+        "title": "BEZ ÚNIKU",
+        "description1": "Face The Wall je mladá Death/Thrash metalová kapela vytvorená v slovenskom undergrounde v roku 2022. Ich zvuk je násilnou kolíziou rýchlych technických riffov, neúprosných bicích a pálčivých melodických sól – zostrenými témami smrti, krvi, piva a radiácie.",
+        "description2": "Toto nie je typický metalový projekt. Toto sú štyri posadnuté mysle vypúšťajúce kontrolovaný chaos:",
+        "description3": "Leo Medveď – vokály, rytmická gitara. Hlas úpadku. Šimon Vician – sólová gitara. Presnosť v šialenstve. Michal Lamper – bicie. Vojnový stroj v pohybe. Timotej Panuska – basová gitara. Nízkofrekvenčný dopad.",
+        "description4": "Face The Wall nemá za cieľ zabávať. Má za cieľ detonovať. Každá pieseň je zbraň. Každý koncert je detonácia.",
+        "description5": "Toto nie je koncert. Toto je rádioaktívny dopad.",
+        "tile1": "ŽIVÉ KONCERTY",
+        "tile2": "MESAČNÝCH POSLUCHÁČOV",
+        "tile3": "PREHRANÍ NA SPOTIFY",
+        "tile4": "DÔVODOV PREČO VÁM KRVÁCAJÚ UŠI"
+    },
+    "our_music": {
+        "title": "NAŠA HUDBA",
+        "description": "Zažite silu a emócie Face The Wall prostredníctvom našich štúdiových albumov, z ktorých každý rozpráva jedinečný príbeh rebélie, vášne a metalového ducha."
+    },
+    "tour": {
+        "title": "TERMÍNY TURNÉ",
+        "description": "Zažite surovú silu Face The Wall naživo. Pridajte sa k nám na našom najnovšom turné, keď prinášame náš drvivý zvuk na pódiá po celej krajine.",
+        "dates": [
+            {
+                "date": "2023-10-01",
+                "status": "Vypredané",
+                "location": "Bratislava, Slovensko",
+                "venue": "Majestic Music Club",
+                "href": ""
+            },
+            {
+                "date": "2023-10-15",
+                "status": "Dostupné",
+                "location": "Praha, Česká republika",
+                "venue": "Rock Café",
+                "href": ""
+            },
+            {
+                "date": "2023-10-22",
+                "status": "Dostupné",
+                "location": "Viedeň, Rakúsko",
+                "venue": "Arena Wien",
+                "href": ""
+            }
+        ]
+    },
+    "contact": {
+        "title": "REZERVUJTE NÁS NA SHOW",
+        "description": "Chcete nás na svojom podujatí? Kontaktujte nás a urobme zo vášho podujatia nezabudnuteľný zážitok!",
+        "name": "Meno",
+        "email": "Email",
+        "message": "Správa",
+        "required": "Povinné",
+        "successMessage": "Správa bola úspešne odoslaná!",
+        "errorMessage": "Chyba pri odosielaní správy. Skúste to znova.",
+        "submit": "Odoslať správu",
+        "followUs": "Sledujte nás",
+        "mailUs": "Napíšte nám"
     }
 }

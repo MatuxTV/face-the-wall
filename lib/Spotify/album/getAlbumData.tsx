@@ -15,6 +15,9 @@ type SpotifyAlbumDetails = {
       track_number: number;
     }[];
   };
+  external_urls: {
+    spotify: string;
+  };
 };
 
 export default async function getAlbumData(albumId: string): Promise<SpotifyAlbumDetails> {
@@ -36,6 +39,5 @@ export default async function getAlbumData(albumId: string): Promise<SpotifyAlbu
     throw new Error('Failed to fetch Spotify album tracks data');
   }
   const data: SpotifyAlbumDetails = await res.json();
-  console.log("Album data fetched successfully:", data);
   return data;
 }
