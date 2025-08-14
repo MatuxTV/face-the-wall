@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -70,7 +71,7 @@ html {
   --color-sidebar-ring: var(--sidebar-ring);
   --color-primary-black: #111111;
   --color-secondary-black: #2a2a2a;
-  --font-metal: 'Metal Mania', regular;
+  --font-metal: 'Metal Mania', 'Arial Black', serif, sans-serif;
   --color-primary-orange: #FF4500;
   --color-secondary-orange: #852907;
   --color-white1: #FAFAFA;

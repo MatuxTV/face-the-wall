@@ -29,10 +29,8 @@ export function AlbumCards(props: { id: string }) {
   useEffect(() => {
     const fetchAlbumData = async () => {
       try {
-        console.log("Album ID:", props.id);
         setLoading(true);
         const data = await getAlbumData(props.id);
-        console.log("Album Data:", data);
         setAlbumData(data);
       } catch (err) {
         console.error("Error fetching album data:", err);

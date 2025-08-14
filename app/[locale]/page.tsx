@@ -21,6 +21,7 @@ import {
   Calendar,
   Ticket,
   Youtube,
+  Calendar1Icon,
 } from "lucide-react";
 import { BsSpotify, BsTiktok } from "react-icons/bs";
 import {
@@ -70,12 +71,15 @@ type BrotherhoodType = {
 };
 
 export const metadata = {
+  metadataBase: new URL(process.env.BASE_URL || 'https://face-the-wall.vercel.app'),
   title: "Face The Wall - Metal Band",
   description: "Official website of Face The Wall, a Slovak thrash metal band.",
   openGraph: {
     title: "Face The Wall - Metal Band",
     description:
       "Official website of Face The Wall, a Slovak thrash metal band.",
+    url: '/',
+    siteName: "Face The Wall",
     images: [
       {
         url: "/og-image.jpg",
@@ -84,13 +88,31 @@ export const metadata = {
         alt: "Face The Wall - Metal Band",
       },
     ],
-    siteName: "Face The Wall",
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Face The Wall - Metal Band",
+    description: "Official website of Face The Wall, a Slovak thrash metal band.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
 export default async function Home({ params }: { params: { locale: string } }) {
   // ✅ params nie je Promise – netreba await
-  const { locale } = params;
+  const { locale } = await params;
 
   const res = await fetch(`${process.env.BASE_URL}/api/images`, {
     cache: "no-store",
@@ -197,7 +219,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
         return await getAlbumData(album.id);
       } catch (error) {
         console.error(`Failed to fetch album data for ID ${album.id}:`, error);
-        return null as any;
+        return null;
       }
     })
   );
@@ -206,7 +228,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
 
   let totalAlbumTracks = 0;
   for (let i = 0; i < validAlbumsData.length; i++) {
-    totalAlbumTracks += (validAlbumsData[i] as any).total_tracks;
+    totalAlbumTracks += validAlbumsData[i].total_tracks;
   }
 
   return (
@@ -236,8 +258,8 @@ export default async function Home({ params }: { params: { locale: string } }) {
             <div className="flex items-center justify-center h-full">
               <Link href={`/${locale}`}>
                 <AnimatedLogo
-                  width={60}
-                  height={60}
+                  width={80}
+                  height={80}
                   className="transition-transform lg:w-20 lg:h-20"
                 />
               </Link>
@@ -362,7 +384,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
         className="w-full min-h-[100svh] flex flex-col justify-center relative z-40 px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 scroll-mt-24"
       >
         <div className="w-full flex font-metal text-white mb-4 sm:mb-6 md:mb-8">
-          <h1 className="text-center mb-2 sm:mb-4 stroke-3 stroke-secondary-orange inline-block tracking-wider drop-shadow-sm drop-shadow-primary-orange w-full leading-tight [font-size:clamp(3rem,12vw,10rem)] font-black">
+          <h1 className="text-center mb-2 sm:mb-4 stroke-3 stroke-secondary-orange inline-block tracking-wider drop-shadow-sm drop-shadow-primary-orange w-full leading-tight [font-size:clamp(3rem,12vw,10rem)] font-metal">
             FACE THE WALL
           </h1>
         </div>
@@ -400,7 +422,9 @@ export default async function Home({ params }: { params: { locale: string } }) {
               variant="outline"
               className="w-full md:w-auto md:min-w-[140px] bg-primary-black/0 border-0 text-white1 hover:bg-primary-black/20 hover:text-white2 px-6 md:px-8 py-3 rounded-md font-semibold flex items-center justify-center gap-2 text-sm md:text-base"
             >
-              <span className="text-base sm:text-lg">📅</span>
+              <span className="text-base sm:text-lg">
+                <Calendar1Icon />
+              </span>
               <span className="line-clamp-1">{buttonText.tourDates}</span>
             </Button>
           </div>
@@ -555,14 +579,18 @@ export default async function Home({ params }: { params: { locale: string } }) {
               {brotherhoodInfo.map((member: BrotherhoodType) => (
                 <div key={member.name} className="relative group">
                   <div className="aspect-square rounded-lg overflow-hidden relative">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                      loading="lazy"
-                    />
+                    <div>
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110 filter contrast-140 brightness-75 exposure-8 shadows-50"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                        loading="lazy"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                    </div>
                     <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 md:p-4 min-w-0">
                       <div className="mb-1 sm:mb-2">
                         <Link
@@ -579,7 +607,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
                       <h3 className="text-white font-bold text-xs sm:text-sm md:text-base tracking-wide leading-tight line-clamp-1">
                         {member.name}
                       </h3>
-                      <p className="text-orange-400 text-[10px] sm:text-xs font-medium uppercase tracking-wider leading-tight line-clamp-1">
+                      <p className="text-white2 text-[10px] sm:text-xs font-medium uppercase tracking-wider leading-tight line-clamp-1">
                         {member.instrumental}
                       </p>
                     </div>
@@ -604,7 +632,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
           </div>
 
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12">
-            {(validAlbumsData as any[]).map((album: any) => (
+            {validAlbumsData.map((album) => (
               <div
                 key={album.id}
                 className="bg-secondary-black/60 border border-secondary-black rounded-lg overflow-hidden"
@@ -635,7 +663,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
                     Track List
                   </h4>
                   <div className="space-y-2">
-                    {album.tracks?.items?.slice(0, 4).map((track: any) => (
+                    {album.tracks?.items?.slice(0, 4).map((track) => (
                       <div
                         key={track.id}
                         className="flex items-center justify-between text-sm gap-3"
@@ -700,10 +728,15 @@ export default async function Home({ params }: { params: { locale: string } }) {
           </div>
 
           <div className="space-y-4 max-w-2xl mx-auto">
-            {tourDatesInfo.dates.map((dateInfo, index) => (
-              <div
-                key={index}
-                className="bg-gray-900/60 border border-orange-600/30 rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between hover:bg-gray-900/80 transition-all duration-300"
+            {tourDatesInfo.dates.length === 0 ? (
+              <div className="text-gray-400 text-sm">
+                No upcoming shows
+              </div>
+            ) : (
+              tourDatesInfo.dates.map((dateInfo, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-900/60 border border-orange-600/30 rounded-lg p-4 sm:p-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between hover:bg-gray-900/80 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="flex items-center gap-2 text-primary-orange">
@@ -756,7 +789,8 @@ export default async function Home({ params }: { params: { locale: string } }) {
                   )}
                 </div>
               </div>
-            ))}
+            ))
+            )}
           </div>
         </div>
       </section>
@@ -867,17 +901,21 @@ export default async function Home({ params }: { params: { locale: string } }) {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black border-t border-orange-600/30">
-        <div className="container mx-auto px-6 py-12">
+      <footer className=" bg-black-background border-t border-orange-600/30 z-50 relative py-12">
+        <div className="container mx-auto px-6 pt-12">
           <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-8">
-            <div className="col-span-1">
-              <div className="mb-6">
-                <h3 className="text-2xl font-metal text-primary-orange mb-3 tracking-wider">
-                  FACE THE WALL
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  Loud. Fast. No compromises. Death/Thrash metal from Slovakia's
-                  underground since 2022.
+            <div className="col-span-1 justify-center flex flex-col items-center">
+              <div className="mb-6 justify-center flex flex-col items-center">
+                <Image
+                  src="/logo.png"
+                  alt="Face The Wall Logo"
+                  width={100}
+                  height={200}
+                  className="h-24 w-40 object-contain rounded-lg p-1"
+                />
+
+                <p className="text-gray-400 text-sm text-center leading-relaxed">
+                  Loud. Fast. No compromises. Death/Thrash metal from Slovakia.
                 </p>
               </div>
               <div className="flex gap-4">
@@ -938,7 +976,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
                 </li>
                 <li>
                   <Link
-                    href="https://open.spotify.com/artist/your-spotify-id"
+                    href="https://open.spotify.com/artist/6zHb8dmI7oyFot5yNStuH1?si=fLJO6FEzRga2l0FqHXm9fQ&utm_medium=share&utm_source=linktree&nd=1&dlsi=dceb0bc19f484434"
                     target="_blank"
                     className="text-gray-400 hover:text-primary-orange transition-colors duration-300 text-sm"
                   >
@@ -947,7 +985,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
                 </li>
                 <li>
                   <Link
-                    href="https://music.apple.com/artist/face-the-wall"
+                    href="https://music.apple.com/sk/album/faces-of-death-pt1-ep/1725534161?at=1000lHKX&ct=linktree_http&itsct=lt_m&itscg=30200&ls=1"
                     target="_blank"
                     className="text-gray-400 hover:text-primary-orange transition-colors duration-300 text-sm"
                   >
@@ -956,7 +994,7 @@ export default async function Home({ params }: { params: { locale: string } }) {
                 </li>
                 <li>
                   <Link
-                    href="https://www.youtube.com/@facethewall"
+                    href="https://www.youtube.com/playlist?list=OLAK5uy_k8pzWnDQl-df2x1bLghfh-d9d7VxcgKKw"
                     target="_blank"
                     className="text-gray-400 hover:text-primary-orange transition-colors duration-300 text-sm"
                   >

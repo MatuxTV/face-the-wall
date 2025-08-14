@@ -21,7 +21,6 @@ type SpotifyAlbumDetails = {
 };
 
 export default async function getAlbumData(albumId: string): Promise<SpotifyAlbumDetails> {
-  console.log("Fetching album data for ID:", albumId);
   const accessToken = await getSpotifyAccessToken();
   const res = await fetch(
     `https://api.spotify.com/v1/albums/${albumId}`,
