@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_USER, // Use your email address
-      to: process.env.EMAIL_USER, // Send email to your own address
+      to: 'matux.zajko@gmail.com', // Send email to your own address
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
