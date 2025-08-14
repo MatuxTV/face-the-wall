@@ -23,7 +23,6 @@ export default function ContactForm({
   required,
   successMessage,
   errorMessage,
-  submit,
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',

@@ -110,8 +110,7 @@ export const metadata = {
   },
 };
 
-export default async function Home({ params }: { params: { locale: string } }) {
-  // ✅ params nie je Promise – netreba await
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
 
   const res = await fetch(`${process.env.BASE_URL}/api/images`, {
